@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.film.guide.R
+import com.film.guide.database.FilmDao
 import com.film.guide.screens.favorite.FavoriteScreen
 import com.film.guide.screens.films.FilmScreen
 import com.film.guide.screens.map.MapScreen
@@ -21,14 +22,14 @@ sealed class Screen(val route: String, val name: String, val iconId: Int) {
 }
 
 @Composable
-fun NavigationHost(paddingValues: PaddingValues, navController: NavHostController) {
+fun NavigationHost(paddingValues: PaddingValues, navController: NavHostController, dao: FilmDao) {
     NavHost(
         navController = navController,
         startDestination = Screen.FilmScreen.route,
         modifier = Modifier.padding(paddingValues)
     ) {
-        composable(Screen.FilmScreen.route) { FilmScreen() }
-        composable(Screen.FavoriteScreen.route) { FavoriteScreen() }
+        composable(Screen.FilmScreen.route) { FilmScreen(dao) }
+        composable(Screen.FavoriteScreen.route) { FavoriteScreen(dao) }
         composable(Screen.MapScreen.route) { MapScreen() }
     }
 }

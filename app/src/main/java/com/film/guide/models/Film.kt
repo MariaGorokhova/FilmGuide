@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Film(
     @JsonProperty("countries")
-    val countries: List<Country> = listOf(),
+    val countries: List<ListEntity> = listOf(),
     @JsonProperty("genres")
-    val genres: List<Genre> = listOf(),
+    val genres: List<ListEntity> = listOf(),
     @JsonProperty("imdbId")
     val imdbId: String? = null,
     @JsonProperty("kinopoiskId")
     val kinopoiskId: Int = 0,
     @JsonProperty("nameEn")
-    val nameEn: Any? = null,
+    val nameEn: String? = null,
     @JsonProperty("nameOriginal")
     val nameOriginal: String = "",
     @JsonProperty("nameRu")
@@ -23,7 +23,7 @@ data class Film(
     @JsonProperty("posterUrlPreview")
     val posterUrlPreview: String = "",
     @JsonProperty("ratingImdb")
-    val ratingImdb: Any? = null,
+    val ratingImdb: String? = null,
     @JsonProperty("ratingKinopoisk")
     val ratingKinopoisk: Double? = null,
     @JsonProperty("type")
